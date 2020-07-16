@@ -3,9 +3,12 @@ import Header from "src/components/Header"
 const Test = () => {
     return (
         <>
-            <Header>
-
-            </Header>
+            <Header />
+            test
+            asdf
+            asdf
+        <p>asdf</p>
+        <p>asdf</p>
         </>
     )
 }
