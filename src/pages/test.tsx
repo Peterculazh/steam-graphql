@@ -1,15 +1,14 @@
-import Header from "src/components/Header"
+import Layout from "src/components/Layout";
 
 const Test = () => {
     return (
-        <>
-            <Header />
+        <Layout>
             test
             asdf
             asdf
-        <p>asdf</p>
-        <p>asdf</p>
-        </>
+            <p>asdf</p>
+            <p>asdf</p>
+        </Layout>
     )
 }
 
