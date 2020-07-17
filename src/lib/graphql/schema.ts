@@ -8,8 +8,9 @@ const typeDefs = gql`
         discounted_percent: Int
         original_price: Int
         final_price: Int
-        large_image: String
-        small_image: String
+        large_capsule_image: String
+        small_capsule_image: String
+        header_image: String
     }
 
     type Query{

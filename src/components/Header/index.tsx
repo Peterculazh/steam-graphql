@@ -1,7 +1,6 @@
 import "./header.sass";
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaArrowLeft } from "../Icons";
 import MobileHeaderMenuLi from "./header-menu-li";
 
 interface IHeaderProps {

@@ -4,10 +4,12 @@ import { ApolloServer } from 'apollo-server-express';
 import typeDefs from '../src/lib/graphql/schema';
 import resolvers from '../src/lib/graphql/resolvers';
 import StoreApi from '../src/lib/graphql/datasources/Store';
+import { loadControllers, scopePerRequest } from 'awilix-express';
+import {  createContainer,  asValue, asClass } from 'awilix';
 
 const port = 3000
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+export const app = next({ dev })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
@@ -24,14 +26,24 @@ app.prepare().then(() => {
 
   graphql.applyMiddleware({ app: server, path: '/api/graphql' });
 
+  const container = createContainer()
+  .register({
+    nextApp: asValue(app),
+    storeApi: asClass(StoreApi),
+  });
+  server.use(scopePerRequest(container));
 
-  server.get('/a', (req, res) => {
-    return app.render(req, res, '/a')
-  })
+  const files = 'controllers/**/*.ts';
+  server.use(loadControllers(files, { cwd: __dirname }));
 
-  server.get('/b', (req, res) => {
-    return app.render(req, res, '/b')
-  })
+
+  // server.get('/a', (req, res) => {
+  //   return app.render(req, res, '/a')
+  // })
+
+  // server.get('/b', (req, res) => {
+  //   return app.render(req, res, '/b')
+  // })
 
   server.all('*', (req, res) => {
     return handle(req, res)

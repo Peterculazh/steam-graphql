@@ -1,10 +1,10 @@
 import React from 'react';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import withApollo from '../lib/apollo/client';
 import '../styles/main.sass';
 
 class MyApp extends App {
-    static async getInitialProps({ Component, router, ctx }: { Component: any, router: any, ctx: any }) {
+    static async getInitialProps({ Component, ctx }: { Component: any, ctx: any }) {
 
         let pageProps: any = {}
         if (Component.getInitialProps) {
