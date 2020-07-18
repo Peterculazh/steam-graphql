@@ -15,6 +15,25 @@ class StoreApi extends RESTDataSource {
             });
         return uniqueFeaturedList;
     }
+
+    async getFeaturedListDetailed() {
+        const list = await this.get('featured');
+        const featuredList = [...list.large_capsules, ...list.featured_win];
+        const uniqueFeaturedList: any = [...new Set(featuredList.map(item => item.id))];
+        return this.getGameDetailedArrayByIds({ ids: uniqueFeaturedList });
+    }
+
+    async getGameById({ id }: { id: number }) {
+        const game = await this.get('appdetails', { appids: id });
+        console.log(game);
+        return game[id].success ? game[id].data : {};
+    }
+
+    async getGameDetailedArrayByIds({ ids }: { ids: [number] }) {
+        return Promise.all(
+            ids.map(id => this.getGameById({ id }))
+        );
+    }
 }
 
 export default StoreApi;

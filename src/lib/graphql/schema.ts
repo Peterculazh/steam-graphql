@@ -13,8 +13,18 @@ const typeDefs = gql`
         header_image: String
     }
 
+    type FeaturedDetailed {
+        name: String
+        # pc_requirements: {
+        #     minimum: String
+        #     recommended: String
+        # }
+        # required_age: Int
+    }
+
     type Query{
-        featured_list:[Featured]
+        featured_list: [Featured]
+        featured_detailed_list: [FeaturedDetailed]
     }
 `
 

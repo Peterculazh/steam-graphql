@@ -14,7 +14,6 @@ interface IHomePage {
 
 const Home = (props: IHomePage) => {
   const { featuredList, success } = props;
-  console.log(featuredList);
   let content: any = featuredList;
   if (!featuredList || !success) {
     const {
@@ -26,10 +25,10 @@ const Home = (props: IHomePage) => {
     if (error) content = "Error";
     if (!!data) {
       const { featured_list } = data;
-      content = featured_list.map((item: IFeaturedGame) => <FeaturedGame {...item} />)
+      content = featured_list.map((item: IFeaturedGame) => <FeaturedGame {...item} key={item.id} />)
     };
   } else {
-    content = featuredList.map((item: IFeaturedGame) => <FeaturedGame {...item} />);
+    content = featuredList.map((item: IFeaturedGame) => <FeaturedGame {...item} key={item.id} />);
   }
   return (
     <Layout>

@@ -1,3 +1,5 @@
+import './featuredgame.sass';
+
 export interface IFeaturedGame {
     id: number,
     name: string,
@@ -12,12 +14,18 @@ export interface IFeaturedGame {
 
 
 const FeaturedGame = (props: IFeaturedGame) => {
-    const { name, original_price, large_capsule_image } = props;
+    const { name, original_price, final_price, large_capsule_image } = props;
     return (
         <>
-            <img src={large_capsule_image} alt={name} />
-            <p>{name}</p>
-            <p>{String(original_price).slice(0, -2).concat('.',String(original_price).slice(-2))}</p>
+            <a className="featured_game">
+                <div className="featured_game_image">
+                    <div style={{backgroundImage: `url(${large_capsule_image})`}} />
+                </div>
+                <div className="info">
+                    <div className="info-name">{name}</div>
+                    <div className="info-price">{String(final_price).slice(0, -2).concat('.', String(final_price).slice(-2))}</div>
+                </div>
+            </a>
         </>
     )
 }
