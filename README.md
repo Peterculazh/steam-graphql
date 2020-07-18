@@ -7,4 +7,4 @@
 3. Next.JS
 4. GraphQL
 
-My target was practice with GraphQL, but after few days of practice I got that GraphQL don't fit my task in this project and require a lot of code to fit it, so REST API more fit in this situation, so I give up those project
+My target was practice with GraphQL, but after few days of practice I got that GraphQL don't fit my task in this project and require a lot of code to fit it, so REST API more fit in this situation, so I give up those project.
